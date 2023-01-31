@@ -28,3 +28,25 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+export async function createItem(item, quantity) {
+    const response = await client.from('list_items').insert([{ item, quantity }]);
+    return response;
+}
+
+export async function getItem() {
+    let response = await client.from('list_items').select('*');
+    return response;
+}
+
+export async function buyItem(id) {
+    const response = await client
+        .from('list_items')
+        .update({ is_bought: true })
+        .match({ user_id: id });
+    return response;
+}
+
+export async function deleteAllItems() {
+    const response = await client.from('list_items').delete().match({ user_id: getUser().id });
+    return response;
+}

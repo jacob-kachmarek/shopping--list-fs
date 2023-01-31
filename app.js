@@ -3,8 +3,11 @@
 import './auth/user.js';
 
 /* Get DOM Elements */
+const sectionEl = document.querySelector('section');
+const formEl = document.querySelector('form');
 
 /* State */
+let items = [];
 
 /* Events */
 
