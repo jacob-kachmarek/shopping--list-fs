@@ -34,8 +34,8 @@ export async function createItem(item, quantity) {
 }
 
 export async function getItem() {
-    let response = await client.from('list_items').select('*');
-    return response;
+    const response = await client.from('list_items').select('*');
+    return response.data;
 }
 
 export async function buyItem(id) {
